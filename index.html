@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños Nico</title>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/helvetihand');
+
+    body {
+      margin: 0;
+      background-color: white;
+      font-family: 'HelvetiHand', sans-serif;
+      overflow: hidden;
+    }
+
+    #container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #scene-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .question {
+      position: absolute;
+      top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5em;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .choice {
+      position: absolute;
+      bottom: 120px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2em;
+      color: white;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .choice-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-icon img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    #consequence {
+      position: absolute;
+      top: 20px;
+      left: 250px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-size: 1.2em;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    #consequence img {
+      height: 32px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <img id="scene-img" src="static/asking.png" alt="Escena inicial">
+
+    <div class="choice" id="choices">
+      <div class="choice-btn" onclick="changeScene()">
+        <div>El silencio cálido del agua</div>
+        <div class="btn-icon"><img src="static/X.png" alt="Botón X"></div>
+      </div>
+      <div class="choice-btn" onclick="changeScene()">
+        <div class="btn-icon"><img src="static/B.png" alt="Botón B"></div>
+        <div>El vapor suave de un spa compartido</div>
+      </div>
+    </div>
+
+    <div class="question" id="question-text">Si pudieras abrir un paréntesis en tu día, ¿a dónde te llevarías?</div>
+
+    <div id="consequence">
+      <img src="static/papillon.png" alt="Consecuencia">
+      <span>Esta acción tendrá consecuencias...</span>
+    </div>
+  </div>
+
+  <script>
+    function changeScene() {
+      const img = document.getElementById('scene-img');
+      const choices = document.getElementById('choices');
+      const question = document.getElementById('question-text');
+      const consequence = document.getElementById('consequence');
+
+      choices.style.display = 'none';
+      question.style.display = 'none';
+
+      consequence.style.display = 'flex';
+
+      setTimeout(() => {
+        img.src = 'static/relaxing.png';
+        // consequence.style.display = 'none';
+        // question.textContent = '...';
+        question.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
